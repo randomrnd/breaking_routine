@@ -1,0 +1,29 @@
+version: "3.4"
+
+services:
+  frontend:
+    build: ./frontend
+
+  backend:
+    build: ./backend
+    environment:
+      MONGO_URI: mongodb://mongo:27017/database
+      PORT: 8000
+      TOKEN_SECRET: secret
+      CALLBACK_URL: http://localhost/api/auth/callback
+      SHRAGA_URL: https:///shraga.shraga.branch-yesodot.org
+      ACCESS_TOKEN_NAME: rabaz-access-token
+      SYSTEM_UNAVAILABLE_URL: /unavailable
+
+  mongo:
+    image: mongo
+
+  nginx-proxy:
+    image: nginx:alpine
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - frontend
+      - backend

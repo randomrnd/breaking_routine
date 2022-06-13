@@ -1,0 +1,6 @@
+[submodule "frontend"]
+	path = frontend
+	url = https://gitlab.com/yesodot/rnd/terminal-rabaz/shared/ui-template-v2/microservices/frontend.git
+[submodule "backend"]
+	path = backend
+	url = https://gitlab.com/yesodot/rnd/terminal-rabaz/shared/ui-template-v2/microservices/backend.git
